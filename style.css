@@ -14,3 +14,9 @@
 #options {
     display: flex;
 }
+
+.canvas-child {
+    width: 20px;
+    height:20px;
+    background-color: black;
+}
