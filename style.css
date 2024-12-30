@@ -4,11 +4,21 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
 #container {
     display: flex;
     justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+    width: 100px;
     height: 75vh;
+    
+    margin: 0 auto;
+    margin-top: 5px;
 }
 
 #options {
@@ -16,7 +26,7 @@
 }
 
 .canvas-child {
-    width: 20px;
-    height:20px;
-    background-color: black;
+    width: 3em;
+    height: 3em;
+    border: 1px solid black;
 }

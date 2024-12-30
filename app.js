@@ -9,4 +9,8 @@ for (let i = 1; i <= 16; i++) {
     c.appendChild(div);
 }
 
-const c_child = document.querySelectorAll(".canvas-child");
+const c_child = document.querySelector(".canvas-child");
+
+c_child.addEventListener("mouseover", () => {
+    
+});
