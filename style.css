@@ -11,14 +11,8 @@ html {
 }
 
 #container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100px;
-    height: 75vh;
-    
-    margin: 0 auto;
-    margin-top: 5px;
+    width: 400px;
+    height: 400px;
 }
 
 #options {
