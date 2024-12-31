@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -11,15 +12,16 @@ html {
 }
 
 #container {
+    display: flex;
+    flex-wrap: wrap;
     width: 400px;
     height: 400px;
-    margin: auto;
 }
 
 #options {
     display: flex;
 }
 
-.grid-item {
+#grid-item {
     border: 1px solid black;
 }

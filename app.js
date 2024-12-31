@@ -3,8 +3,9 @@ const c  = document.querySelector("#container");
 const opt = document.querySelector("#options");
 
 const body = document.querySelector("body");
-const grid = document.querySelectorAll(".grid-item");
+const grid = document.querySelectorAll("#grid-item");
 
+//buttons
 const sizeBtn = document.querySelector("#size-button");
 const colorBtn = document.querySelector("#color-button");
 const clearBtn = document.querySelector("#clear");
@@ -20,19 +21,22 @@ colorBtn.addEventListener("click", () => {
 });
 
 // function to make the grid
-const makeGrid = () => {
-    for (i = 0; i < 16; i++) {
-        for (j = 0; j < 16; j++) {
-            const row = document.createElement("div");
-            const size = 400 / 
-            row.setAttribute("class", ".grid-item");
-            c.appendChild(row);
-            row.textContent = `${i}, ${j}`
+let makeGrid = (row, col) => {
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < col; j++) {
+            const size = 400 / row; //constant value to represent pixel size of container
+            const div = document.createElement("div");
+            div.setAttribute("id", "grid-item");
+            div.style.width = size + "px";
+            div.style.height = size + "px";
+
+            c.appendChild(div);
         }
     }
 };
 
-makeGrid();
+makeGrid(16, 16);
+
 
 
 
