@@ -5,6 +5,8 @@ const opt = document.querySelector("#options");
 const body = document.querySelector("body");
 const grid = document.querySelectorAll(".grid-item");
 
+const sizeBtn = document.querySelector("#size-button");
+const colorBtn = document.querySelector("#color-button");
 
 for (let i = 1; i <= 16; i++) {
     const div = document.createElement("div");
