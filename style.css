@@ -13,14 +13,13 @@ html {
 #container {
     width: 400px;
     height: 400px;
+    margin: auto;
 }
 
 #options {
     display: flex;
 }
 
-.canvas-child {
-    width: 3em;
-    height: 3em;
+.grid-item {
     border: 1px solid black;
 }

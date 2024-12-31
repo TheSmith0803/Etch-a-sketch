@@ -1,11 +1,14 @@
-//canvas for etch a sketch
+//the two main windows
 const c  = document.querySelector("#container");
-//container to hold different option buttons for functionality
 const opt = document.querySelector("#options");
+
+const body = document.querySelector("body");
+const grid = document.querySelectorAll(".grid-item");
+
 
 for (let i = 1; i <= 16; i++) {
     const div = document.createElement("div");
-    div.setAttribute("class", `canvas-child`);
+    div.setAttribute("class", `grid-item`);
     c.appendChild(div);
 }
 
