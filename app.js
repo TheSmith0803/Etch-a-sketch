@@ -7,15 +7,37 @@ const grid = document.querySelectorAll(".grid-item");
 
 const sizeBtn = document.querySelector("#size-button");
 const colorBtn = document.querySelector("#color-button");
+const clearBtn = document.querySelector("#clear");
 
-for (let i = 1; i <= 16; i++) {
-    const div = document.createElement("div");
-    div.setAttribute("class", `grid-item`);
-    c.appendChild(div);
-}
+//change size of grid here
+sizeBtn.addEventListener("click", () => {
 
-const c_child = document.querySelector(".canvas-child");
-
-c_child.addEventListener("mouseover", () => {
-    
 });
+
+//change color of brush
+colorBtn.addEventListener("click", () => {
+
+});
+
+// function to make the grid
+const makeGrid = () => {
+    for (i = 0; i < 16; i++) {
+        for (j = 0; j < 16; j++) {
+            const row = document.createElement("div");
+            const size = 400 / 
+            row.setAttribute("class", ".grid-item");
+            c.appendChild(row);
+            row.textContent = `${i}, ${j}`
+        }
+    }
+};
+
+makeGrid();
+
+
+
+
+//function to clear the grid
+const clearGrid = () => {
+    c.removeChild("");
+};
