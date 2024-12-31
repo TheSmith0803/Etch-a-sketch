@@ -20,11 +20,15 @@ colorBtn.addEventListener("click", () => {
 
 });
 
+let resizeGrid = () => {
+    
+};
+
 // function to make the grid
 let makeGrid = (row, col) => {
     for (i = 0; i < row; i++) {
         for (j = 0; j < col; j++) {
-            const size = 400 / row; //constant value to represent pixel size of container
+            const size = 1000 / row; //constant value to represent pixel size of container
             const div = document.createElement("div");
             div.setAttribute("id", "grid-item");
             div.style.width = size + "px";
