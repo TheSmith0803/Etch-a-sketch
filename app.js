@@ -15,13 +15,38 @@ let color = "black";
 
 //change size of grid here
 sizeBtn.addEventListener("click", () => {
-    resizeGrid();
+    let size = prompt("Please input a number from 1 to 99");
+    if (size < 1 || size > 99) {
+        alert("Please only enter a number between 1 and 99");
+    }
+    else if (Number.isInteger(size)) {
+        alert("Please no characters or decimal numbers!");
+    } else {
+        makeGrid(size, size);
+        brush();
+    }
 });
 
 //change color of brush
 colorBtn.addEventListener("click", () => {
     const color_c = document.querySelector("#color-container");
     //add logic here to add buttons that enable user to select a specific color
+    rgbNums = [];
+    for (let i = 0; i < 3; i++) {
+        colorNum = Math.floor(Math.random() * 256);
+        rgbNums.push(colorNum);
+    }
+
+    color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
+    
+});
+
+//button to clear the current grid
+clearBtn.addEventListener("click", () => {
+    let grid = document.querySelectorAll(".grid-item");
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].style["background-color"] = "#fff";
+    }
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
@@ -45,12 +70,11 @@ let makeGrid = (row, col) => {
 makeGrid(16, 16); //making stock grid
 
 //identify grid items
-const grid = document.querySelectorAll(".grid-item");
-let grid_arr = Array.from(grid);
-console.log(grid_arr[1]);
+//let grid = document.querySelectorAll(".grid-item");
 
 //function to change fill color
-let fillDiv = () => {
+let brush = () => {
+    let grid = document.querySelectorAll(".grid-item");
     for (let i = 0; i < grid.length; i++) {
         grid[i].addEventListener("mouseover", () => {
             grid[i].style.backgroundColor = color;
@@ -58,29 +82,4 @@ let fillDiv = () => {
     }
 }
 
-fillDiv(); //calling fill div
-
-//function to resize the grid
-let resizeGrid = () => {
-    let size = prompt("Please input a number from 1 to 99");
-    if (size < 1 || size > 99) {
-        alert("Please only enter a number between 1 and 99");
-    }
-    else if (Number.isInteger(size)) {
-        alert("Please no characters or decimal numbers!");
-    } else {
-        makeGrid(size, size);
-        fillDiv();
-    }
-};
-
-
-
-
-
-
-
-
-
-
-
+brush(); //making divs in grid fillable
