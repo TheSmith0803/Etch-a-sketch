@@ -13,9 +13,11 @@ html {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    background-color: #0aa0af;
 }
 
 #container {
+    background-color: #fff;
     display: flex;
     flex-wrap: wrap;
     width: 1010px;
@@ -26,6 +28,27 @@ html {
 #options {
     display: flex;
 }
+
+#options button {
+    margin: 0 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+#options button:hover {
+    background-color: #555;
+}
+
+#options button:active {
+    color: #bbb;
+    transition: none;
+}
+
 .grid-item {
-    border: 0.5px solid #0001;
+    border: 0.5px solid #0000;
 }
