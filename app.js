@@ -3,14 +3,14 @@ const c  = document.querySelector("#container");
 const opt = document.querySelector("#options");
 
 const body = document.querySelector("body");
-const grid = document.querySelectorAll(".grid-item");
-let grid_arr = Array.from(grid);
+
 
 //buttons
 const sizeBtn = document.querySelector("#size-button");
 const colorBtn = document.querySelector("#color-button");
 const clearBtn = document.querySelector("#clear");
 
+let color = "black";
 //EVENT LISTENERS FOR BUTTONS
 
 //hover event
@@ -28,11 +28,10 @@ sizeBtn.addEventListener("click", () => {
     }
 });
 
-
-
 //change color of brush
 colorBtn.addEventListener("click", () => {
-
+    const color_c = document.querySelector("#color-container");
+    //add logic here to add buttons that enable user to select a specific color
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
@@ -58,3 +57,15 @@ let makeGrid = (row, col) => {
 };
 
 makeGrid(16, 16);
+
+const grid = document.querySelectorAll(".grid-item");
+let grid_arr = Array.from(grid);
+console.log(grid_arr[1]);
+
+
+for (let i = 0; i < grid.length; i++) {
+    grid[i].addEventListener("mouseover", () => {
+        grid[i].style.backgroundColor = color;
+    });
+}
+
