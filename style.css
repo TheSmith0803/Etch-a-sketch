@@ -26,6 +26,6 @@ html {
 #options {
     display: flex;
 }
-#grid-item {
+.grid-item {
     border: 0.5px solid #0001;
 }
