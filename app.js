@@ -38,7 +38,7 @@ colorBtn.addEventListener("click", () => {
     }
 
     color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
-    
+    console.log(rgbNums);
 });
 
 //button to clear the current grid
