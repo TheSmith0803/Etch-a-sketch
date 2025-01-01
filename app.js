@@ -1,9 +1,7 @@
 //the two main windows
 const c  = document.querySelector("#container");
 const opt = document.querySelector("#options");
-
 const body = document.querySelector("body");
-
 
 //buttons
 const sizeBtn = document.querySelector("#size-button");
@@ -17,15 +15,7 @@ let color = "black";
 
 //change size of grid here
 sizeBtn.addEventListener("click", () => {
-    let size = prompt("Please input a number from 1 to 99");
-    if (size < 1 || size > 99) {
-        alert("Please only enter a number between 1 and 99");
-    }
-    else if (Number.isInteger(size)) {
-        alert("Please no characters or decimal numbers!");
-    } else {
-        makeGrid(size, size);
-    }
+    resizeGrid();
 });
 
 //change color of brush
@@ -35,10 +25,6 @@ colorBtn.addEventListener("click", () => {
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
-
-let resizeGrid = () => {
-
-};
 
 // function to make the grid
 let makeGrid = (row, col) => {
@@ -56,16 +42,45 @@ let makeGrid = (row, col) => {
     }
 };
 
-makeGrid(16, 16);
+makeGrid(16, 16); //making stock grid
 
+//identify grid items
 const grid = document.querySelectorAll(".grid-item");
 let grid_arr = Array.from(grid);
 console.log(grid_arr[1]);
 
-
-for (let i = 0; i < grid.length; i++) {
-    grid[i].addEventListener("mouseover", () => {
-        grid[i].style.backgroundColor = color;
-    });
+//function to change fill color
+let fillDiv = () => {
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].addEventListener("mouseover", () => {
+            grid[i].style.backgroundColor = color;
+        });
+    }
 }
+
+fillDiv(); //calling fill div
+
+//function to resize the grid
+let resizeGrid = () => {
+    let size = prompt("Please input a number from 1 to 99");
+    if (size < 1 || size > 99) {
+        alert("Please only enter a number between 1 and 99");
+    }
+    else if (Number.isInteger(size)) {
+        alert("Please no characters or decimal numbers!");
+    } else {
+        makeGrid(size, size);
+        fillDiv();
+    }
+};
+
+
+
+
+
+
+
+
+
+
 
