@@ -56,7 +56,7 @@ let makeGrid = (row, col) => {
     c.innerHTML = ''; //clear the divs in the etch-a-sketch container
     for (i = 0; i < row; i++) {
         for (j = 0; j < col; j++) {
-            const size = 1000 / row; //constant value to represent pixel size of container
+            const size = 600 / row; //constant value to represent pixel size of container
             const div = document.createElement("div");
             div.setAttribute("class", "grid-item");
             div.style.width = size + "px";
