@@ -7,6 +7,7 @@ const body = document.querySelector("body");
 const sizeBtn = document.querySelector("#size-button");
 const colorBtn = document.querySelector("#color-button");
 const clearBtn = document.querySelector("#clear");
+const randColorBtn = document.querySelector("#rand-color");
 
 let color = "black";
 //EVENT LISTENERS FOR BUTTONS
@@ -47,6 +48,11 @@ clearBtn.addEventListener("click", () => {
     for (let i = 0; i < grid.length; i++) {
         grid[i].style["background-color"] = "#fff";
     }
+});
+
+//button to change the cursor to random colors
+randColorBtn.addEventListener("click", () => {
+    //add logic here for random colors on each hover
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
