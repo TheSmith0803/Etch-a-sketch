@@ -52,25 +52,22 @@ clearBtn.addEventListener("click", () => {
 
 //button to change the cursor to random colors
 randColorBtn.addEventListener("click", () => { //only seems to get slow when i call this event...
-    
     let grid = document.querySelectorAll(".grid-item"); //identify grid items
     //let randRGB = []; //array to hold randomnums ---- !!! A new array needs to be created dynamically
     //each time the mouse over event happens
-
     for (let i = 0; i < grid.length; i++) {
-        let randRGB = [];
-        for (let i = 0; i < 3; i++) {
-            let randColorNum = Math.floor(Math.random() * 256);
-            randRGB.push(randColorNum);
-            
-        }
-        let randColor = `${randRGB[0]}, ${randRGB[0]}, ${randRGB[0]}`;
-        brush(randColor);
+        grid[i].addEventListener("mouseover", () => {
+            randRGB = [];
+    
+            for (let i = 0; i < 3; i++) {
+                let randColorNum = Math.floor(Math.random() * 256);
+                randRGB.push(randColorNum);
+            }
+                
+            let randColor = `rgb(${randRGB[0]}, ${randRGB[1]}, ${randRGB[2]})`;
+            brush(randColor);
+        });
     }
-    //create new random color on each mouse over
-    
-    
-    
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
@@ -109,4 +106,3 @@ let brush = (color) => {
 
 
 makeGrid(16, 16); //making stock grid
-brush(color); //making divs in grid fillable
