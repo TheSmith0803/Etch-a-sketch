@@ -10,7 +10,6 @@ const clearBtn = document.querySelector("#clear");
 const randColorBtn = document.querySelector("#rand-color");
 
 let color = "black";
-let randColor = Math.floor()
 //EVENT LISTENERS FOR BUTTONS
 
 //hover event
@@ -55,22 +54,22 @@ clearBtn.addEventListener("click", () => {
 randColorBtn.addEventListener("click", () => { //only seems to get slow when i call this event...
     
     let grid = document.querySelectorAll(".grid-item"); //identify grid items
-    let randRGB = []; //array to hold randomnums
+    //let randRGB = []; //array to hold randomnums ---- !!! A new array needs to be created dynamically
+    //each time the mouse over event happens
+
+    for (let i = 0; i < grid.length; i++) {
+        let randRGB = [];
+        for (let i = 0; i < 3; i++) {
+            let randColorNum = Math.floor(Math.random() * 256);
+            randRGB.push(randColorNum);
+            
+        }
+        let randColor = `${randRGB[0]}, ${randRGB[0]}, ${randRGB[0]}`;
+        brush(randColor);
+    }
     //create new random color on each mouse over
     
-    //iterate over all grid items and assign new color on mouse over
-    for (let i = 0; i < grid.length; i++) {
-        grid[i].addEventListener("mouseover", () => {
-            //this is where the change needs to happen
-            for (let j = 0; j < 3; j++) {
-                let randNum = Math.floor(Math.random() * 256);
-                randRGB.push(randNum);
-                color = `rgb(${randRGB[0]}, ${randRGB[1]}, ${randRGB[2]})`
-            }
-            //I will finish this event listener off camera and then do a video on the 
-            //etch-a-sketch project walking through how each bit works... :)
-        });
-    }
+    
     
 });
 
@@ -106,6 +105,8 @@ let brush = (color) => {
         });
     }
 }
+
+
 
 makeGrid(16, 16); //making stock grid
 brush(color); //making divs in grid fillable
