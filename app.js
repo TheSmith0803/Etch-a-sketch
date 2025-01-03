@@ -10,6 +10,7 @@ const clearBtn = document.querySelector("#clear");
 const randColorBtn = document.querySelector("#rand-color");
 
 let color = "black";
+let randColor = Math.floor()
 //EVENT LISTENERS FOR BUTTONS
 
 //hover event
@@ -24,13 +25,12 @@ sizeBtn.addEventListener("click", () => {
         alert("Please no characters or decimal numbers!");
     } else {
         makeGrid(size, size);
-        brush();
+        brush(color);
     }
 });
 
 //change color of brush
 colorBtn.addEventListener("click", () => {
-    const color_c = document.querySelector("#color-container");
     //add logic here to add buttons that enable user to select a specific color
     rgbNums = [];
     for (let i = 0; i < 3; i++) {
@@ -39,6 +39,7 @@ colorBtn.addEventListener("click", () => {
     }
 
     color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
+    brush(color);
     console.log(rgbNums);
 });
 
@@ -51,8 +52,26 @@ clearBtn.addEventListener("click", () => {
 });
 
 //button to change the cursor to random colors
-randColorBtn.addEventListener("click", () => {
-    //add logic here for random colors on each hover
+randColorBtn.addEventListener("click", () => { //only seems to get slow when i call this event...
+    
+    let grid = document.querySelectorAll(".grid-item"); //identify grid items
+    let randRGB = []; //array to hold randomnums
+    //create new random color on each mouse over
+    
+    //iterate over all grid items and assign new color on mouse over
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].addEventListener("mouseover", () => {
+            //this is where the change needs to happen
+            for (let j = 0; j < 3; j++) {
+                let randNum = Math.floor(Math.random() * 256);
+                randRGB.push(randNum);
+                color = `rgb(${randRGB[0]}, ${randRGB[1]}, ${randRGB[2]})`
+            }
+            //I will finish this event listener off camera and then do a video on the 
+            //etch-a-sketch project walking through how each bit works... :)
+        });
+    }
+    
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
@@ -73,13 +92,13 @@ let makeGrid = (row, col) => {
     }
 };
 
-makeGrid(16, 16); //making stock grid
+
 
 //identify grid items
 //let grid = document.querySelectorAll(".grid-item");
 
 //function to change fill color
-let brush = () => {
+let brush = (color) => {
     let grid = document.querySelectorAll(".grid-item");
     for (let i = 0; i < grid.length; i++) {
         grid[i].addEventListener("mouseover", () => {
@@ -88,4 +107,5 @@ let brush = () => {
     }
 }
 
-brush(); //making divs in grid fillable
+makeGrid(16, 16); //making stock grid
+brush(color); //making divs in grid fillable
