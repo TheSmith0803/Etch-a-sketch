@@ -106,3 +106,4 @@ let brush = (color) => {
 
 
 makeGrid(16, 16); //making stock grid
+brush(color);
