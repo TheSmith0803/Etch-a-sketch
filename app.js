@@ -19,13 +19,14 @@ let size = 16;
 
 //change size of grid here
 sizeBtn.addEventListener("click", () => {
-    size = prompt("Please input a number from 1 to 99");
+    size = prompt("Please input a number from 1 to 99 (This will clear the grid)");
     if (size < 1 || size > 99) {
         alert("Please only enter a number between 1 and 99");
     }
     else if (Number.isInteger(size)) {
         alert("Please no characters or decimal numbers!");
     } else {
+        makeGrid(size, size);
         brush(color);
     }
 });
@@ -40,7 +41,7 @@ colorBtn.addEventListener("click", () => {
     }
 
     color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
-    makeGrid(16, 16);
+    makeGrid(size, size);
     brush(color);
     console.log(rgbNums);
 });
