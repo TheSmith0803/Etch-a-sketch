@@ -8,22 +8,24 @@ const sizeBtn = document.querySelector("#size-button");
 const colorBtn = document.querySelector("#color-button");
 const clearBtn = document.querySelector("#clear");
 const randColorBtn = document.querySelector("#rand-color");
+const shadeBtn = document.querySelector("#shade-button");
+
 
 let color = "black";
+let size = 16;
 //EVENT LISTENERS FOR BUTTONS
 
 //hover event
 
 //change size of grid here
 sizeBtn.addEventListener("click", () => {
-    let size = prompt("Please input a number from 1 to 99");
+    size = prompt("Please input a number from 1 to 99");
     if (size < 1 || size > 99) {
         alert("Please only enter a number between 1 and 99");
     }
     else if (Number.isInteger(size)) {
         alert("Please no characters or decimal numbers!");
     } else {
-        makeGrid(size, size);
         brush(color);
     }
 });
@@ -38,6 +40,7 @@ colorBtn.addEventListener("click", () => {
     }
 
     color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
+    makeGrid(16, 16);
     brush(color);
     console.log(rgbNums);
 });
@@ -60,7 +63,7 @@ randColorBtn.addEventListener("click", () => { //only seems to get slow when i c
             randRGB = [];
     
             for (let i = 0; i < 3; i++) {
-                let randColorNum = Math.floor(Math.random() * 256);
+                let randColorNum = Math.floor(Math.random() * 257);
                 randRGB.push(randColorNum);
             }
                 
@@ -68,6 +71,11 @@ randColorBtn.addEventListener("click", () => { //only seems to get slow when i c
             brush(randColor);
         });
     }
+});
+
+//button to enter opacity mode
+shadeBtn.addEventListener("click", () => {
+
 });
 
 //FUNCTIONS FOR FUNCTIONALITY
@@ -101,9 +109,9 @@ let brush = (color) => {
             grid[i].style.backgroundColor = color;
         });
     }
-}
+};
 
 
 
-makeGrid(16, 16); //making stock grid
+makeGrid(size, size); //making stock grid
 brush(color);
