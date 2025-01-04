@@ -41,7 +41,6 @@ colorBtn.addEventListener("click", () => {
     }
 
     color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
-    makeGrid(size, size);
     brush(color);
     console.log(rgbNums);
 });
@@ -91,7 +90,6 @@ let makeGrid = (row, col) => {
             div.setAttribute("class", "grid-item");
             div.style.width = size + "px";
             div.style.height = size + "px";
-
             c.appendChild(div);
         }
     }
