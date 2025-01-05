@@ -1,7 +1,6 @@
 //the two main windows
 const c  = document.querySelector("#container");
 const opt = document.querySelector("#options");
-//plus the body
 const body = document.querySelector("body");
 
 //buttons
@@ -11,16 +10,13 @@ const clearBtn = document.querySelector("#clear");
 const randColorBtn = document.querySelector("#rand-color");
 const shadeBtn = document.querySelector("#shade-button");
 
-
-
-
+//defining initial fill color and grid size
 let color = "black";
 let size = 16;
+
 //EVENT LISTENERS FOR BUTTONS
 
-//hover event
-
-//change size of grid here
+//changes the size of the grid
 sizeBtn.addEventListener("click", () => {
     size = prompt("Please input a number from 1 to 99 (This will clear the grid)");
     if (size < 1 || size > 99) {
@@ -37,10 +33,9 @@ sizeBtn.addEventListener("click", () => {
 //change color of brush
 colorBtn.addEventListener("click", () => {
     //This removes the event listeners for the random color mode
-    //and the shade mode
     let grid = document.querySelectorAll(".grid-item");
     for (let i = 0; i < grid.length; i++) {
-        grid[i].removeEventListener("mouseover", changeColor);
+        grid[i].removeEventListener("mouseover", getRandomColor);
     }
     rgbNums = [];
     for (let i = 0; i < 3; i++) {
@@ -50,25 +45,19 @@ colorBtn.addEventListener("click", () => {
 
     color = `rgb(${rgbNums[0]}, ${rgbNums[1]}, ${rgbNums[2]})`;
     brush(color);
-    console.log(rgbNums);
 });
 
-//button to clear the current grid
+//button to clear the current grid of all fill
 clearBtn.addEventListener("click", () => {
     let grid = document.querySelectorAll(".grid-item");
     for (let i = 0; i < grid.length; i++) {
-        grid[i].style["background-color"] = "#fff";
+        grid[i].style.backgroundColor = "#fff";
     }
 });
 
 //button to change the cursor to random colors
 randColorBtn.addEventListener("click", randColorMode); 
 
-
-//button to enter opacity mode
-shadeBtn.addEventListener("click", () => {
-
-});
 
 //FUNCTIONS FOR FUNCTIONALITY
 
@@ -87,11 +76,6 @@ function makeGrid(row, col) {
     }
 };
 
-
-
-//identify grid items
-//let grid = document.querySelectorAll(".grid-item");
-
 //function to change fill color
 function brush(color) {
     let grid = document.querySelectorAll(".grid-item");
@@ -107,11 +91,11 @@ function randColorMode() {
     //!!! A new array needs to be created dynamically
     //each time the mouse over event happens
     for (let i = 0; i < grid.length; i++) {
-        grid[i].addEventListener("mouseover", changeColor);
+        grid[i].addEventListener("mouseover", getRandomColor);
     }
 }
 
-function changeColor() {
+function getRandomColor() {
     randRGB = []; //array to hold randomnums
 
     for (let i = 0; i < 3; i++) {
@@ -122,8 +106,6 @@ function changeColor() {
     let randColor = `rgb(${randRGB[0]}, ${randRGB[1]}, ${randRGB[2]})`;
     brush(randColor);
 }
-
-
 
 makeGrid(size, size); //making stock grid
 brush(color);
