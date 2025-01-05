@@ -1,6 +1,7 @@
 //the two main windows
 const c  = document.querySelector("#container");
 const opt = document.querySelector("#options");
+//plus the body
 const body = document.querySelector("body");
 
 //buttons
@@ -9,6 +10,8 @@ const colorBtn = document.querySelector("#color-button");
 const clearBtn = document.querySelector("#clear");
 const randColorBtn = document.querySelector("#rand-color");
 const shadeBtn = document.querySelector("#shade-button");
+
+
 
 
 let color = "black";
@@ -33,7 +36,12 @@ sizeBtn.addEventListener("click", () => {
 
 //change color of brush
 colorBtn.addEventListener("click", () => {
-    //add logic here to add buttons that enable user to select a specific color
+    //This removes the event listeners for the random color mode
+    //and the shade mode
+    let grid = document.querySelectorAll(".grid-item");
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].removeEventListener("mouseover", changeColor);
+    }
     rgbNums = [];
     for (let i = 0; i < 3; i++) {
         colorNum = Math.floor(Math.random() * 256);
@@ -54,24 +62,8 @@ clearBtn.addEventListener("click", () => {
 });
 
 //button to change the cursor to random colors
-randColorBtn.addEventListener("click", () => { //only seems to get slow when i call this event...
-    let grid = document.querySelectorAll(".grid-item"); //identify grid items
-    //let randRGB = []; //array to hold randomnums ---- !!! A new array needs to be created dynamically
-    //each time the mouse over event happens
-    for (let i = 0; i < grid.length; i++) {
-        grid[i].addEventListener("mouseover", () => {
-            randRGB = [];
-    
-            for (let i = 0; i < 3; i++) {
-                let randColorNum = Math.floor(Math.random() * 257);
-                randRGB.push(randColorNum);
-            }
-                
-            let randColor = `rgb(${randRGB[0]}, ${randRGB[1]}, ${randRGB[2]})`;
-            brush(randColor);
-        });
-    }
-});
+randColorBtn.addEventListener("click", randColorMode); 
+
 
 //button to enter opacity mode
 shadeBtn.addEventListener("click", () => {
@@ -81,7 +73,7 @@ shadeBtn.addEventListener("click", () => {
 //FUNCTIONS FOR FUNCTIONALITY
 
 // function to make the grid
-let makeGrid = (row, col) => {
+function makeGrid(row, col) {
     c.innerHTML = ''; //clear the divs in the etch-a-sketch container
     for (i = 0; i < row; i++) {
         for (j = 0; j < col; j++) {
@@ -101,7 +93,7 @@ let makeGrid = (row, col) => {
 //let grid = document.querySelectorAll(".grid-item");
 
 //function to change fill color
-let brush = (color) => {
+function brush(color) {
     let grid = document.querySelectorAll(".grid-item");
     for (let i = 0; i < grid.length; i++) {
         grid[i].addEventListener("mouseover", () => {
@@ -109,6 +101,27 @@ let brush = (color) => {
         });
     }
 };
+
+function randColorMode() {
+    let grid = document.querySelectorAll(".grid-item"); //identify grid items
+    //!!! A new array needs to be created dynamically
+    //each time the mouse over event happens
+    for (let i = 0; i < grid.length; i++) {
+        grid[i].addEventListener("mouseover", changeColor);
+    }
+}
+
+function changeColor() {
+    randRGB = []; //array to hold randomnums
+
+    for (let i = 0; i < 3; i++) {
+        let randColorNum = Math.floor(Math.random() * 256);
+        randRGB.push(randColorNum);
+    }
+        
+    let randColor = `rgb(${randRGB[0]}, ${randRGB[1]}, ${randRGB[2]})`;
+    brush(randColor);
+}
 
 
 
